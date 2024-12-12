@@ -1,0 +1,1405 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API CASA DE DAVI",
+    "description": "Documentação da api da Casa de Davi",
+    "version": "1.0.0"
+  },
+  "host": "localhost:4000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/pacientes/": {
+      "get": {
+        "tags": [
+          "Pacientes"
+        ],
+        "description": "Endpoint para buscar todos os pacientes",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": true,
+            "value": 1,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de registros por página",
+            "required": true,
+            "value": 10,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pacientes encontrados",
+            "schema": {
+              "$ref": "#/definitions/PacienteResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pacientes"
+        ],
+        "description": "Endpoint para criar um novo paciente",
+        "parameters": [
+          {
+            "name": "novoPaciente",
+            "in": "body",
+            "description": "dados do paciente",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PacienteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Paciente criado",
+            "schema": {
+              "$ref": "#/definitions/PacienteResponse"
+            }
+          }
+        }
+      }
+    },
+    "/pacientes/{id}": {
+      "get": {
+        "tags": [
+          "Pacientes"
+        ],
+        "description": "Endpoint para buscar um paciente pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do paciente"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paciente encontrado",
+            "schema": {
+              "$ref": "#/definitions/PacienteResponseView"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pacientes"
+        ],
+        "description": "Endpoint para atualizar um paciente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "paciente",
+            "in": "body",
+            "description": "dados do paciente",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PacienteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paciente atualizado",
+            "schema": {
+              "$ref": "#/definitions/PacienteResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pacientes"
+        ],
+        "description": "Endpoint para deletar um paciente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do paciente"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Paciente deletado"
+          }
+        }
+      }
+    },
+    "/vacinas/": {
+      "get": {
+        "tags": [
+          "Vacinas"
+        ],
+        "description": "Endpoint para buscar todas as vacinas",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": true,
+            "value": 1,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de registros por página",
+            "required": true,
+            "value": 10,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vacinas encontradas",
+            "schema": {
+              "$ref": "#/definitions/VacinaResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vacinas"
+        ],
+        "description": "Endpoint para criar uma nova vacina",
+        "parameters": [
+          {
+            "name": "novaVacina",
+            "in": "body",
+            "description": "dados da vacina",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VacinaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Vacina criada",
+            "schema": {
+              "$ref": "#/definitions/VacinaResponse"
+            }
+          }
+        }
+      }
+    },
+    "/vacinas/{id}": {
+      "get": {
+        "tags": [
+          "Vacinas"
+        ],
+        "description": "Endpoint para buscar uma vacina pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id da vacina"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vacina",
+            "schema": {
+              "$ref": "#/definitions/VacinaResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Vacinas"
+        ],
+        "description": "Endpoint para atualizar uma vacina",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vacina",
+            "in": "body",
+            "description": "dados da vacina",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VacinaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vacina atualizada",
+            "schema": {
+              "$ref": "#/definitions/VacinaResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Vacinas"
+        ],
+        "description": "Endpoint para deletar uma vacina",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id da vacina"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Vacina deletada"
+          }
+        }
+      }
+    },
+    "/enderecos/": {
+      "get": {
+        "tags": [
+          "Endereços"
+        ],
+        "description": "Endpoint para buscar todos os endereços",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": true,
+            "value": 1,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de registros por página",
+            "required": true,
+            "value": 10,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endereços   response",
+            "schema": {
+              "$ref": "#/definitions/EnderecoResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Endereços"
+        ],
+        "description": "Endpoint para criar um novo endereço",
+        "parameters": [
+          {
+            "name": "novoEndereco",
+            "in": "body",
+            "description": "dados do endereço",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnderecoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Endereço criado",
+            "schema": {
+              "$ref": "#/definitions/EnderecoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/enderecos/{id}": {
+      "get": {
+        "tags": [
+          "Endereços"
+        ],
+        "description": "Endpoint para buscar um endereço pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do endereço"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endereço encontrado",
+            "schema": {
+              "$ref": "#/definitions/EnderecoResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Endereços"
+        ],
+        "description": "Endpoint para atualizar um endereço",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endereco",
+            "in": "body",
+            "description": "dados do endereço",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnderecoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endereço atualizado",
+            "schema": {
+              "$ref": "#/definitions/EnderecoResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Endereços"
+        ],
+        "description": "Endpoint para deletar um endereço",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do endereço"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Endereço deletado"
+          }
+        }
+      }
+    },
+    "/parentescos/": {
+      "get": {
+        "tags": [
+          "Parentescos"
+        ],
+        "description": "Endpoint para buscar todos os parentescos",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": true,
+            "value": 1,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de registros por página",
+            "required": true,
+            "value": 10,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parentescos encontrados",
+            "schema": {
+              "$ref": "#/definitions/ParentescoResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parentescos"
+        ],
+        "description": "Endpoint para criar um novo parentesco",
+        "parameters": [
+          {
+            "name": "novoParentesco",
+            "in": "body",
+            "description": "dados do parentesco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParentescoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Parentesco criado",
+            "schema": {
+              "$ref": "#/definitions/ParentescoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/parentescos/{id}": {
+      "get": {
+        "tags": [
+          "Parentescos"
+        ],
+        "description": "Endpoint para buscar um parentesco pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do parentesco"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parentesco",
+            "schema": {
+              "$ref": "#/definitions/ParentescoResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Parentescos"
+        ],
+        "description": "Endpoint para atualizar um parentesco",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parentesco",
+            "in": "body",
+            "description": "dados do parentesco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ParentescoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parentesco atualizado",
+            "schema": {
+              "$ref": "#/definitions/ParentescoResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Parentescos"
+        ],
+        "description": "Endpoint para deletar um parentesco",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do parentesco"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Parentesco deletado"
+          }
+        }
+      }
+    },
+    "/exames/": {
+      "get": {
+        "tags": [
+          "Exames"
+        ],
+        "description": "Endpoint para buscar todos os exames",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": true,
+            "value": 1,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limite de registros por página",
+            "required": true,
+            "value": 10,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exames encontrados",
+            "schema": {
+              "$ref": "#/definitions/ExameResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Exames"
+        ],
+        "description": "Endpoint para criar um novo exame",
+        "parameters": [
+          {
+            "name": "novoExame",
+            "in": "body",
+            "description": "dados do exame",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExameRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Exame criado",
+            "schema": {
+              "$ref": "#/definitions/ExameResponse"
+            }
+          }
+        }
+      }
+    },
+    "/exames/{id}": {
+      "get": {
+        "tags": [
+          "Exames"
+        ],
+        "description": "Endpoint para buscar um exame pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do exame"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exame encontrado",
+            "schema": {
+              "$ref": "#/definitions/ExameResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Exames"
+        ],
+        "description": "Endpoint para atualizar um exame",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "exame",
+            "in": "body",
+            "description": "dados do exame",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExameRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exame atualizado",
+            "schema": {
+              "$ref": "#/definitions/ExameResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Exames"
+        ],
+        "description": "Endpoint para deletar um exame",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "id do exame"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Exame deletado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EnderecoRequest": {
+      "type": "object",
+      "properties": {
+        "estado": {
+          "type": "string",
+          "example": "SP"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "São Paulo"
+        },
+        "bairro": {
+          "type": "string",
+          "example": "Vila Mariana"
+        },
+        "rua": {
+          "type": "string",
+          "example": "Rua Domingos de Morais"
+        },
+        "numero": {
+          "type": "string",
+          "example": "1234"
+        },
+        "pacienteId": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "pacienteId"
+      ]
+    },
+    "ExameRequest": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Exame de sangue"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "Nenhum"
+        },
+        "dataExameRealizado": {
+          "type": "string",
+          "example": "2021-09-01"
+        },
+        "medicacao": {
+          "type": "string",
+          "example": "Nenhuma"
+        },
+        "relatorio": {
+          "type": "string",
+          "example": "Exame de sangue para verificar a saúde do paciente"
+        },
+        "pacienteId": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "nome",
+        "dataExameRealizado",
+        "pacienteId"
+      ]
+    },
+    "PacienteRequest": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "João da Silva"
+        },
+        "dataNascimento": {
+          "type": "string",
+          "example": "1990-01-01"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12345678900"
+        },
+        "rg": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "cns": {
+          "type": "string",
+          "example": "123456789012345"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "(11) 99999-9999"
+        },
+        "ativo": {
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "required": [
+        "nome",
+        "ativo"
+      ]
+    },
+    "ParentescoRequest": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "João"
+        },
+        "sobrenome": {
+          "type": "string",
+          "example": "Silva"
+        },
+        "grauParentesco": {
+          "type": "string",
+          "example": "Pai"
+        },
+        "pacienteId": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "pacienteId"
+      ]
+    },
+    "VacinaRequest": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Vacina 1"
+        },
+        "dataAplicacao": {
+          "type": "string",
+          "example": "2021-01-01"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "Tratamento 1"
+        },
+        "observacao": {
+          "type": "string",
+          "example": "Observação 1"
+        },
+        "pacienteId": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "nome",
+        "dataAplicacao",
+        "pacienteId"
+      ]
+    },
+    "EnderecoResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "estado": {
+          "type": "string",
+          "example": "SP"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "São Paulo"
+        },
+        "bairro": {
+          "type": "string",
+          "example": "Jardim Paulista"
+        },
+        "rua": {
+          "type": "string",
+          "example": "Avenida Paulista"
+        },
+        "numero": {
+          "type": "string",
+          "example": "1000"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ExameResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Exame de sangue"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "Jejum de 12 horas"
+        },
+        "dataExameRealizado": {
+          "type": "string",
+          "example": "2021-09-01"
+        },
+        "medicacao": {
+          "type": "string",
+          "example": "Nenhuma"
+        },
+        "relatorio": {
+          "type": "string",
+          "example": "Exame realizado com sucesso"
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "dataExameRealizado"
+      ]
+    },
+    "PacienteResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Fulano"
+        },
+        "dataNascimento": {
+          "type": "string",
+          "example": "1990-01-01"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12345678910"
+        },
+        "rg": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "cns": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "ativo": {
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "ativo"
+      ]
+    },
+    "PacienteResponseView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Fulano"
+        },
+        "dataNascimento": {
+          "type": "string",
+          "example": "1990-01-01"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12345678910"
+        },
+        "rg": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "cns": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "123456789"
+        },
+        "ativo": {
+          "type": "boolean",
+          "example": true
+        },
+        "vacinas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Vacina A"
+              },
+              "dataAplicacao": {
+                "type": "string",
+                "example": "2021-01-01"
+              },
+              "tratamento": {
+                "type": "string",
+                "example": "1 dose"
+              },
+              "observacao": {
+                "type": "string",
+                "example": "Observação"
+              }
+            },
+            "required": [
+              "id",
+              "nome",
+              "dataAplicacao"
+            ]
+          }
+        },
+        "exames": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Exame de sangue"
+              },
+              "tratamento": {
+                "type": "string",
+                "example": "Jejum de 12 horas"
+              },
+              "dataExameRealizado": {
+                "type": "string",
+                "example": "2021-09-01"
+              },
+              "medicacao": {
+                "type": "string",
+                "example": "Nenhuma"
+              },
+              "relatorio": {
+                "type": "string",
+                "example": "Exame realizado com sucesso"
+              }
+            },
+            "required": [
+              "id",
+              "nome",
+              "dataExameRealizado"
+            ]
+          }
+        },
+        "parentesco": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "example": 1
+            },
+            "nome": {
+              "type": "string",
+              "example": "Fulano"
+            },
+            "sobrenome": {
+              "type": "string",
+              "example": "Silva"
+            },
+            "grauParentesco": {
+              "type": "string",
+              "example": "Pai"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "endereco": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "example": 1
+            },
+            "estado": {
+              "type": "string",
+              "example": "SP"
+            },
+            "cidade": {
+              "type": "string",
+              "example": "São Paulo"
+            },
+            "bairro": {
+              "type": "string",
+              "example": "Jardim Paulista"
+            },
+            "rua": {
+              "type": "string",
+              "example": "Avenida Paulista"
+            },
+            "numero": {
+              "type": "string",
+              "example": "1000"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "ativo",
+        "vacinas",
+        "exames",
+        "parentesco",
+        "endereco"
+      ]
+    },
+    "ParentescoResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Fulano"
+        },
+        "sobrenome": {
+          "type": "string",
+          "example": "Silva"
+        },
+        "grauParentesco": {
+          "type": "string",
+          "example": "Pai"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "VacinaResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Vacina A"
+        },
+        "dataAplicacao": {
+          "type": "string",
+          "example": "2021-01-01"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "1 dose"
+        },
+        "observacao": {
+          "type": "string",
+          "example": "Observação"
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "dataAplicacao"
+      ]
+    },
+    "EnderecoResponseList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "estado": {
+                "type": "string",
+                "example": "SP"
+              },
+              "cidade": {
+                "type": "string",
+                "example": "São Paulo"
+              },
+              "bairro": {
+                "type": "string",
+                "example": "Jardim Paulista"
+              },
+              "rua": {
+                "type": "string",
+                "example": "Avenida Paulista"
+              },
+              "numero": {
+                "type": "string",
+                "example": "1000"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "ExameResponseList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Exame de sangue"
+              },
+              "tratamento": {
+                "type": "string",
+                "example": "Jejum de 12 horas"
+              },
+              "dataExameRealizado": {
+                "type": "string",
+                "example": "2021-09-01"
+              },
+              "medicacao": {
+                "type": "string",
+                "example": "Nenhuma"
+              },
+              "relatorio": {
+                "type": "string",
+                "example": "Exame realizado com sucesso"
+              }
+            },
+            "required": [
+              "id",
+              "nome",
+              "dataExameRealizado"
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "PacienteResponseList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Fulano"
+              },
+              "dataNascimento": {
+                "type": "string",
+                "example": "1990-01-01"
+              },
+              "cpf": {
+                "type": "string",
+                "example": "12345678910"
+              },
+              "rg": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "cns": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "telefone": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "ativo": {
+                "type": "boolean",
+                "example": true
+              }
+            },
+            "required": [
+              "id",
+              "nome",
+              "ativo"
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "ParentescoResponseList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Fulano"
+              },
+              "sobrenome": {
+                "type": "string",
+                "example": "Silva"
+              },
+              "grauParentesco": {
+                "type": "string",
+                "example": "Pai"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "VacinaResponseList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "nome": {
+                "type": "string",
+                "example": "Vacina A"
+              },
+              "dataAplicacao": {
+                "type": "string",
+                "example": "2021-01-01"
+              },
+              "tratamento": {
+                "type": "string",
+                "example": "1 dose"
+              },
+              "observacao": {
+                "type": "string",
+                "example": "Observação"
+              }
+            },
+            "required": [
+              "id",
+              "nome",
+              "dataAplicacao"
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    }
+  }
+}
